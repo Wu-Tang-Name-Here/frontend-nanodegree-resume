@@ -18,18 +18,20 @@ EducationObject["city"]= "Long Beach. CA";
 var bio = {
     "name":"Einar Sevilla",
     "role":"Aspiring Web Developer",
-    "contacts":{
+    "contacts": [
+    {
         "mobile":"415.948.6686",
         "email":"einarsevilla@gmail.com",
         "github":"Wu-Tang-Name-Here",
         "twitter":"@einarsevilla",
         "location":"San Francisco"
-    },
+    }
+    ],
     "welcomeMessage":"Hello everyone, and welcome to my online resume!",
     "skills":[
         "HTML","CSS","Office 365", "Web Design","Project Management",
     ],
-    "biopic":"images/fry.jpg"
+    "biopic":"images/einar.jpg"
 }
 
 var education = {
@@ -137,12 +139,53 @@ projects.display = function () {
 }
 projects.display();
 
-name.display = function () {
-    for(name in bio.name) {
-        $("#header").append(HTMLcontactGeneric);
-    }
-}
-name.display();
+var formattedHeader = HTMLheaderName.replace("%data%", bio.name);
+$("#header").append(formattedHeader);
+var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+$("#header").append(formattedRole);
+
+for (contact in bio.contacts) {
+    $("#header").append(HTMLcontactGeneric);
+
+var formattedMobile = HTMLmobile.replace("%data%", bio.contacts[contact].mobile);
+$("#topContacts").append(formattedMobile);
+
+var formattedEmail = HTMLemail.replace("%data%", bio.contacts[contact].email);
+$("#topContacts").append(formattedEmail);
+
+var formattedTwitter= HTMLtwitter.replace("%data%", bio.contacts[contact].twitter);
+$("#topContacts").append(formattedTwitter);
+
+var formattedGit = HTMLgithub.replace("%data%", bio.contacts[contact].github);
+$("#topContacts").append(formattedGit);
+
+var formattedLocation = HTMLlocation.replace("%data%", bio.contacts[contact].location);
+$("#top").append(formattedLocation);
+};
+
+
+var formattedPhoto = HTMLbioPic.replace("%data%", bio.biopic);
+$("#header").append(formattedPhoto);
+var formattedMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+$("#header").append(formattedMessage);
+
+if(bio.skills.length > 0) {
+
+    $("#header").append(HTMLskillsStart);
+
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
+    $("#skills").append(formattedSkill);
+    formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
+
+    $("#skills").append(formattedSkill);
+    formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
+
+    $("#skills").append(formattedSkill);
+    formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
+    $("#skills").append(formattedSkill);
+};
+
+
 /*function inName(name) {
     name = name.trim().split(" ");
     console.log (name);
