@@ -101,27 +101,27 @@ education.display = function() {
         var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[ed].dates);
         $(".education-entry:last").append(formattedSchoolDates);
 
-        var formattedCity = HTMLschoolLocation.replace("%data%", education.schools[ed].location);
-        $(".education-entry:last").append(formattedCity);
+        var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[ed].location);
+        $(".education-entry:last").append(formattedLocation);
 
         var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[ed].majors);
         $(".education-entry:last").append(formattedMajor);
 
         //Online Courses
 
-        $("#education").append(HTMLonlineClasses);
+        $(".education-entry").append(HTMLonlineClasses);
 
         var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[ed].title).replace("#", education.onlineCourses[ed].courseLink);
-        $("#education").append(formattedOnlineTitle);
+        $(".education-entry").append(formattedOnlineTitle);
 
         var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[ed].school);
-        $("#education").append(formattedOnlineSchool);
+        $(".education-entry").append(formattedOnlineSchool);
 
         var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[ed].dates);
-        $("#education").append(formattedOnlineDates);
+        $(".education-entry").append(formattedOnlineDates);
 
         var formattedUrl = HTMLonlineURL.replace("%data%", education.onlineCourses[ed].url).replace("#", education.onlineCourses[ed].url);
-        $("#education").append(formattedUrl);
+        $(".education-entry").append(formattedUrl);
     }
 };
 education.display();
